@@ -1,0 +1,33 @@
+{
+	"$schema": "",
+	"type": "object",
+	"properties": {
+		"accounts": {
+			"type": "object",
+			"patternProperties": {
+				"^[-.a-z0-9]+$": {
+					"type": "string"
+				}
+			}
+		},
+		"domains": {
+			"type": "object",
+			"patternProperties": {
+				"^[-.a-z0-9]+$": {
+					"type": "object",
+					"properties": {
+						"account": {"type": "string"},
+						"remote": {"type": "string"},
+						"token_dir": {"type": "string"},
+						"private": {"type": "string"},
+						"cert": {"type": "string"}
+					},
+					"additionalProperties": false,
+					"required": ["account", "token_dir","private", "cert"]
+				}
+			}
+		}
+	},
+	"additionalProperties": false,
+	"required": ["accounts", "domains"]
+}
